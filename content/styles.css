@@ -1,0 +1,138 @@
+
+body {
+    font-family: Calibri, Arial, serif;
+    background-color: #c4e3f3;
+}
+
+#app-header {
+    background-color: rgba(89, 154, 255, 0.88);
+    border: #2a0c44 1px solid;
+    padding: 5px;
+    font-size: 16pt;
+    font-weight: bold;
+    color: black;
+    text-shadow: rgba(255, 255, 255, 0.5) 0.5px 0.5px 1px;
+    margin: 5px;
+}
+
+#app-header .user-area {
+    float: right;
+    font-size: 14pt;
+    margin: -45px 5px 0 0;
+}
+
+#app-header .user-area span {
+    margin-right: 15px;
+}
+
+body>header>a {
+    display: inline-block;
+    margin: 10px 0 0 10px;
+}
+
+img {
+    width:150px;
+    text-align:center;
+}
+
+#header-title {
+    display: inline-block;
+    position: absolute;
+    top: 35px;
+    left: 200px;
+    font-size: 60px;
+}
+
+#home-page-msg{
+    text-align: center;
+}
+
+ul.menu {
+    vertical-align: bottom;
+    float: right;
+    padding: 0;
+    position: absolute;
+    top:97px;
+    right: 33px;
+    display: inline-block;
+}
+
+ul.menu li {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+ul.menu li:hover {
+    background: #2E75B6;
+
+}
+
+ul.menu li a {
+    text-decoration: none;
+    color:#000000;
+}
+
+ul.info-messages {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background: #cfc;
+}
+
+ul.info-messages li {
+    display: block;
+}
+
+ul.error-messages {
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background: #fcc;
+}
+
+ul.error-messages li {
+    display: block;
+}
+
+#app-footer {
+    clear: both;
+    background-color: rgba(89, 154, 255, 0.88);
+    border: #2a0c44 1px solid;
+    text-align: center;
+    padding: 5px;
+    font-size: 12pt;
+    font-weight: normal;
+    color: black;
+    text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
+    margin: 5px;
+}
+
+.box {
+    border-radius:15px;
+    width: 50%;
+    float: right;
+    text-align: right;
+    background-color: rgba(89, 154, 255, 0.88);
+    border: #10007e 1px solid;
+    margin: 15px 5px;
+    padding: 10px;
+    box-shadow: rgba(39, 232, 212, 0.50) 0.5px 0.5px 3px;
+}
+
+.box h1 {
+    margin: 0 0 10px 0;
+    font-size: 18pt;
+    font-weight: bold;
+    color: black;
+    text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
+}
+
+.box h2 {
+    margin: 0 0 10px 0;
+    font-size: 16pt;
+    font-weight: bold;
+    color: black;
+    text-shadow: rgba(255, 255, 255, 0.5) 0.3px 0.3px 1px;
+}
