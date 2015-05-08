@@ -4,6 +4,7 @@
 
 <script src='/content/jQuery/jquery-2.1.4.min.js'></script>
 <script src='/content/jquery-noty/jquery-noty.js'></script>
+<script src='/content/scripts.js'></script>
 
 </body>
 

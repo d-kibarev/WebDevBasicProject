@@ -4,7 +4,7 @@ class AccountModel extends BaseModel{
 
     public function register($username, $password){
         $statement = self::$db->prepare(
-            "SELECT COUNT(Id)FROM Users WHERE Username = ?");
+            "SELECT COUNT(Id)FROM users WHERE username = ?");
         $statement->bind_param("s", $username);
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
@@ -14,7 +14,7 @@ class AccountModel extends BaseModel{
 
         $hashPass = password_hash($password, PASSWORD_BCRYPT);
 
-        $registerStatement = self::$db->prepare( "INSERT INTO Users (Username, pass_hash) VALUES (?, ?)" );
+        $registerStatement = self::$db->prepare( "INSERT INTO users (username, password, email) VALUES (?, ?, '')" );
         $registerStatement->bind_param("ss", $username, $hashPass);
         $registerStatement->execute();
 
@@ -22,6 +22,15 @@ class AccountModel extends BaseModel{
     }
 
     public function login($username, $password){
+        $statement = self::$db->prepare(
+            "SELECT * FROM users WHERE username = ?");
+        $statement->bind_param("s", $username);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
 
+        if(password_verify($password, $result["password"])){
+            return true;
+        }
+            return false;
     }
 }

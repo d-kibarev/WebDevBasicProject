@@ -14,11 +14,30 @@
     <header id="app-header">
         <a href="/"><img src="/content/images/movies.png"></a>
         <h1 id="header-title">Forum</h1>
+
         <ul class="menu">
             <li><a href="/">Home</a></li>
-            <li><a href="/account/login">Login</a></li>
-            <li><a href="/account/register">Register</a></li>
+
+            <li id="linkUserProfile"><a href="/account/profile">Welcome,
+                <?php
+                    if(isset($_SESSION['username'])){
+                        echo $_SESSION['username'];
+                    }
+                else{
+                    echo "Guest";
+                }?>!</a>
+            </li>
+            <?php if(!$this->isLoggedIn) : ?>
+                <li><a href="/account/login">Login</a></li>
+            <?php endif ?>
+            <?php if($this->isLoggedIn) : ?>
+            <li>
+                <form method="post" action="/account/logout">
+                    <input type="submit" id="btn-logout" value="Logout">
+                </form>
+            </li>
         </ul>
+        <?php endif ?>
     </header>
 
     <?php include('messages.php'); ?>

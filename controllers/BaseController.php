@@ -5,11 +5,16 @@ abstract class BaseController {
     protected $layoutName = DEFAULT_LAYOUT;
     protected $isViewRendered = false;
     protected $isPost = false;
+    protected $isLoggedIn = false;
 
     function __construct($controllerName) {
         $this->controllerName = $controllerName;
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->isPost = true;
+        }
+
+        if(isset($_SESSION['username'])){
+            $this-> isLoggedIn = true;
         }
         $this->onInit();
     }
@@ -37,6 +42,14 @@ abstract class BaseController {
                 include_once($footerFile);
             }
             $this->isViewRendered = true;
+        }
+    }
+
+    public function authorize(){
+
+        if(!$this->isLoggedIn){
+            $this->addErrorMessage("Please login first!");
+            $this->redirect("account","login");
         }
     }
 

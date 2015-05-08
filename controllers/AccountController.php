@@ -12,9 +12,13 @@ class AccountController extends BaseController {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
+            if($username == null || strlen($username) < 3){
+                $this->addErrorMessage("Username should be longest than 2 symbols!");
+            }
             $isRegister = $this->db->register($username, $password);
             if($isRegister) {
-                $this->redirect("books", "index");
+                $_SESSION['username'] = $username;
+                $this->redirect("home", "index");
             }
             else{
                 $this->addErrorMessage("Registration failed!");
@@ -29,8 +33,10 @@ class AccountController extends BaseController {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            $isLogin = $this->db->register($username, $password);
+            $isLogin = $this->db->login($username, $password);
             if($isLogin) {
+                $_SESSION['username'] = $username;
+                $this->addInfoMessage("Successful login!");
                 $this->redirect("home", "index");
             }
             else{
@@ -43,5 +49,8 @@ class AccountController extends BaseController {
 
     public function logout(){
 
+        unset($_SESSION['username']);
+        $this->addInfoMessage("Successful logout!");
+        $this->redirectToUrl("/");
     }
 }
