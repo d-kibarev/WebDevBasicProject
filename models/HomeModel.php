@@ -3,7 +3,7 @@
 class HomeModel extends BaseModel {
     public function getAll() {
         $statement = self::$db->query(
-            "SELECT * FROM questions as q JOIN categories as c on c.id = q.category_id");
+            "SELECT q.*, c.name FROM questions as q JOIN categories as c on c.id = q.category_id");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 

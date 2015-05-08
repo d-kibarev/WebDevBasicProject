@@ -12,11 +12,13 @@
                 <th style="border:1px solid ">Question</th>
                 <th style="border:1px solid ">Category</th>
             </tr>
+
             <?php foreach ($this->questions as $question) : ?>
+
                 <tr>
                     <td style="border:1px solid "><?= htmlspecialchars($question['content']) ?></td>
                     <td style="border:1px solid "><?= htmlspecialchars($question['name']) ?></td>
-                    <td style="width: 20px;"><a href="/answers/create/<?=$question['id']?> ">[Answer]</a></td>
+                    <td style="width: 100px;"><a href="/answers/index/<?=$question['id']?> ">[See Answers]</a></td>
                 </tr>
             <?php endforeach ?>
         </table>

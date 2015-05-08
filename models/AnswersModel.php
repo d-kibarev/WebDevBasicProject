@@ -1,27 +1,20 @@
 <?php
 
-class AuthorsModel extends BaseModel {
-    public function getAll() {
+class AnswersModel extends BaseModel {
+    public function getAll($question_id) {
         $statement = self::$db->query(
-            "SELECT * FROM authors ORDER BY id");
+            "SELECT * FROM answers WHERE question_id = $question_id");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createAuthor($name) {
-        if ($name == '') {
+    public function createAnswer($text, $question_id) {
+        if ($text == '') {
             return false;
         }
         $statement = self::$db->prepare(
-            "INSERT INTO authors VALUES(NULL, ?)");
-        $statement->bind_param("s", $name);
-        $statement->execute();
-        return $statement->affected_rows > 0;
-    }
-
-    public function deleteAuthor($id) {
-        $statement = self::$db->prepare(
-            "DELETE FROM authors WHERE id = ?");
-        $statement->bind_param("i", $id);
+            "INSERT INTO answers (content, user_id, question_id, record_date)
+              VALUES(?, 1, ?, now())");
+        $statement->bind_param("si", $text, $question_id);
         $statement->execute();
         return $statement->affected_rows > 0;
     }

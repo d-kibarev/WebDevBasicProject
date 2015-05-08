@@ -1,40 +1,33 @@
 <?php
 
-class AuthorsController extends BaseController {
+class AnswersController extends BaseController {
     private $db;
 
     public function onInit() {
-        $this->title = "Authors";
-        $this->db = new AuthorsModel();
+        $this->title = "Answers";
+        $this->db = new AnswersModel();
     }
 
-    public function index() {
-        $this->authors = $this->db->getAll();
+    public function index($question_id) {
+
+        $this->currentQuestionId = $question_id;
+        $this->answers = $this->db->getAll($question_id);
 
         $this->renderView();
     }
 
-    public function create() {
+    public function create($question_id) {
         if ($this->isPost) {
-            $name = $_POST['author_name'];
+            $answer_text = $_POST['answer-text'];
 
-            if ($this->db->createAuthor($name)) {
-                $this->addInfoMessage("Author created.");
-                $this->redirect('authors');
+            if ($this->db->createAnswer($answer_text, $question_id)) {
+                $this->addInfoMessage("Answer created.");
+                $this->redirectToUrl('/');
             } else {
-                $this->addErrorMessage("Error creating author.");
+                $this->addErrorMessage("Error creating answer.");
             }
         }
 
         $this->renderView(__FUNCTION__);
-    }
-
-    public function delete($id) {
-        if ($this->db->deleteAuthor($id)) {
-            $this->addInfoMessage("Author deleted.");
-        } else {
-            $this->addErrorMessage("Cannot delete author.");
-        }
-        $this->redirect('authors');
     }
 }
