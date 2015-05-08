@@ -74,26 +74,30 @@ ul.menu li a {
     color:#000000;
 }
 
-ul.info-messages {
-    width: 80%;
+.info {
+    width: 60%;
     margin: 10px auto;
     padding: 10px;
     background: #cfc;
+    text-decoration: none;
 }
 
-ul.info-messages li {
+.info li {
     display: block;
+    text-decoration: none;
 }
 
-ul.error-messages {
+.error {
     width: 80%;
     margin: 10px auto;
     padding: 10px;
     background: #fcc;
+    text-decoration: none;
 }
 
-ul.error-messages li {
+.error li {
     display: block;
+    text-decoration: none;
 }
 
 #app-footer {

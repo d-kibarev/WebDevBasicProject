@@ -6,6 +6,7 @@ abstract class BaseController {
     protected $isViewRendered = false;
     protected $isPost = false;
     protected $isLoggedIn = false;
+    protected $currentQuestionId = 1;
 
     function __construct($controllerName) {
         $this->controllerName = $controllerName;
