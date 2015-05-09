@@ -150,3 +150,15 @@ ul.menu li a {
     margin: 5px;
     width: 99%;
 }
+table{
+    width: 99%
+}
+
+th{
+    font-size: 18px;
+    background-color: rgba(89, 154, 255, 0.88)
+}
+
+tr{
+    text-align:left;
+}

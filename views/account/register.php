@@ -13,11 +13,11 @@
             </div>
             <div class="form-group">
                 <label for="PasswordConfirm">Password Confirm</label>
-                <input id="PasswordConfirm" type="password" placeholder="Password Confirm" name="confirm-password" >
+                <input id="PasswordConfirm" type="password" placeholder="Password Confirm" name="pass-confirm" required>
             </div>
             <div class="form-group">
                 <label for="Email">Email</label>
-                <input id="Email" placeholder="Email" type="text" name="email" >
+                <input id="Email" placeholder="Email" type="email" name="email" required>
             </div>
             <button type="submit" class="button"><span class="glyphicon glyphicon-lock"></span> Register</button>
             <a href="/account/login" style="text-decoration: none; border-bottom: blue 1px dotted;">Login here</a>

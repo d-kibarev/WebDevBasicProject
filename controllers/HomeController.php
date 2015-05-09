@@ -4,7 +4,7 @@ class HomeController extends BaseController {
     private $db;
 
     public function onInit() {
-        $this->title = "Questions";
+        $this->title = "Movie forum";
         $this->db = new HomeModel();
     }
 
@@ -15,13 +15,14 @@ class HomeController extends BaseController {
         $this->renderView();
     }
 
-    public function createQuestion(){
+    public function create(){
         if ($this->isPost) {
             $category_name = $_POST['category-name'];
             $tag_name = $_POST['tag-name'];
             $question_text = $_POST['question-text'];
+            $username = $_SESSION['username'];
 
-            if ($this->db->createQuestion($category_name, $tag_name, $question_text)) {
+            if ($this->db->create($category_name, $tag_name, $question_text, $username)) {
                 $this->addInfoMessage("Question created.");
                 $this->redirectToUrl('/');
             } else {

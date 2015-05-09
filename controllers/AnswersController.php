@@ -9,20 +9,22 @@ class AnswersController extends BaseController {
     }
 
     public function index($question_id) {
+        $_SESSION['question-id'] = $question_id;
 
-        $this->currentQuestionId = $question_id;
         $this->answers = $this->db->getAll($question_id);
 
         $this->renderView();
     }
 
-    public function create($question_id) {
+    public function create() {
         if ($this->isPost) {
             $answer_text = $_POST['answer-text'];
+            $question_id = $_SESSION['question-id'];
+            $user_id = $_SESSION['user-id'];
 
-            if ($this->db->createAnswer($answer_text, $question_id)) {
+            if ($this->db->createAnswer($answer_text, $question_id, $user_id)) {
                 $this->addInfoMessage("Answer created.");
-                $this->redirectToUrl('/');
+                $this->redirectToUrl("/answers/index/$question_id");
             } else {
                 $this->addErrorMessage("Error creating answer.");
             }
