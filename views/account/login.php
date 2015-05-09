@@ -3,7 +3,7 @@
             <div class="page-header">
                 <h1>Login</h1>
             </div>
-            <form role="form" method="POST">
+            <form method="POST" action="/account/login">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <div class="input-group">

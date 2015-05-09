@@ -24,6 +24,8 @@
                 </tr>
             <?php endforeach ?>
         </table>
+        <a href="/home/index/<?= $this->page - 1?>/<?= $this->items?>"><-Previous</a>
+        <a href="/home/index/<?= $this->page + 1?>/<?= $this->items?>">Next-></a>
         <?php endif ?>
     </div>
 </div>

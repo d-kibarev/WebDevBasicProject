@@ -23,7 +23,7 @@ class AccountController extends BaseController {
                     $_SESSION['username'] = $username;
                     $this->db->getUserId($username);
                     $this->addErrorMessage("Successful registration!");
-                    $this->redirect("home", "index");
+                    $this->redirectToUrl("/home/index/0/5");
                 } else {
                     $this->addErrorMessage("Registration failed!");
                 }
@@ -42,7 +42,7 @@ class AccountController extends BaseController {
                 $this->db->getUserId($username);
                 $_SESSION['username'] = $username;
                 $this->addInfoMessage("Successful login!");
-                $this->redirect("home", "index");
+                $this->redirectToUrl("/home/index/0/5");
             }
             else{
                 $this->addErrorMessage("Login failed!");
@@ -53,6 +53,7 @@ class AccountController extends BaseController {
 
     public function logout(){
         unset($_SESSION['username']);
+        unset($_SESSION['user-id']);
         $this->addInfoMessage("Successful logout!");
         $this->redirectToUrl("/");
     }

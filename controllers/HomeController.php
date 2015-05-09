@@ -8,9 +8,11 @@ class HomeController extends BaseController {
         $this->db = new HomeModel();
     }
 
-    public function index(){
-
-        $this->questions = $this->db->getAll();
+    public function index($page=0, $items=5){
+        //$this->questions = $this->db->getAll();
+        $this->page = $page;
+        $this->items = $items;
+        $this->questions = $this->db->getWithPaging($page, $items);
 
         $this->renderView();
     }

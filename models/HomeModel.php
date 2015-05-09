@@ -10,8 +10,12 @@ class HomeModel extends BaseModel {
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getWithPaging($page, $count_per_page) {
-        $page = $count_per_page.$page;
+    public function getWithPaging($page=0, $count_per_page=5) {
+        if($page >= 0 ) {
+            $page = $count_per_page * $page;
+        }else{
+            $page=0;
+        }
         $statement = self::$db->query(
             "SELECT q.*, c.name, u.username FROM questions as q
               JOIN categories as c on c.id = q.category_id
