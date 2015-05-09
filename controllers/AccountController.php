@@ -41,6 +41,7 @@ class AccountController extends BaseController {
             if($isLogin) {
                 $this->db->getUserId($username);
                 $_SESSION['username'] = $username;
+
                 $this->addInfoMessage("Successful login!");
                 $this->redirectToUrl("/home/index/0/5");
             }

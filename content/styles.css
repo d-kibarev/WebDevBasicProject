@@ -79,7 +79,9 @@ ul.menu li a {
     margin: 10px auto;
     padding: 10px;
     background: #cfc;
-    text-decoration: none;
+    list-style-type: none;
+    text-align: center;
+    font-size: 20px;
 }
 
 .info li {
@@ -92,7 +94,9 @@ ul.menu li a {
     margin: 10px auto;
     padding: 10px;
     background: #fcc;
-    text-decoration: none;
+    list-style-type: none;
+    text-align: center;
+    font-size: 20px;
 }
 
 .error li {
