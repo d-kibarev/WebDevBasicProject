@@ -52,6 +52,13 @@ class AccountController extends BaseController {
         $this->renderView(__FUNCTION__);
     }
 
+    public function profile(){
+
+        $this->authorize();
+        $this->profileInfo = $this->db->getProfile($_SESSION['user-id']);
+        $this->renderView(__FUNCTION__);
+    }
+
     public function logout(){
         unset($_SESSION['username']);
         unset($_SESSION['user-id']);

@@ -43,4 +43,13 @@ class AccountModel extends BaseModel{
 
         $_SESSION['user-id'] = $result['id'];
     }
+
+    public function getProfile($user_id){
+        $statement = self::$db->prepare(
+            "SELECT username, email FROM users WHERE id = ?");
+        $statement->bind_param("i", $user_id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+        return $result;
+    }
 }
