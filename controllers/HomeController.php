@@ -8,12 +8,17 @@ class HomeController extends BaseController {
         $this->db = new HomeModel();
     }
 
-    public function index($page=0, $items=5){
+    public function index($page=0, $items=5, $category_id=0){
         //$this->questions = $this->db->getAll();
         $this->page = $page;
         $this->items = $items;
-        $this->questions = $this->db->getWithPaging($page, $items);
+        if($category_id > 0) {
+            $this->questions = $this->db->getQuestionByCategory($category_id);
+        }
+        else{
 
+            $this->questions = $this->db->getWithPaging($page, $items);
+        }
         $this->renderView();
     }
 
@@ -35,4 +40,16 @@ class HomeController extends BaseController {
         $this->categories = $this->db->getCategories();
         $this->renderView(__FUNCTION__,false);
     }
+
+    public function categories(){
+        //$this->questions_by_categories = $this->db->getQuestionByCategory($category_id);
+        $this->categories = $this->db->getCategories();
+        $this->renderView(__FUNCTION__, false);
+
+    }
+
+    public function questionsByCategory($category_id){
+        $this->questions = $this->db->getQuestionByCategory($category_id);
+        $this->renderView(__FUNCTION__);
+}
 }

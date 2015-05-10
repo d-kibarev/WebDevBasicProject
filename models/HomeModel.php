@@ -42,4 +42,14 @@ class HomeModel extends BaseModel {
         $statement->execute();
         return $statement->affected_rows > 0;
     }
+
+    public function getQuestionByCategory($category_id) {
+        $statement = self::$db->query(
+            "SELECT q.*, c.name, u.username FROM questions as q
+              JOIN categories as c on c.id = q.category_id
+              JOIN users as u on u.id = q.user_id
+              WHERE q.category_id = $category_id
+              ORDER BY q.record_date DESC");
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
 }
