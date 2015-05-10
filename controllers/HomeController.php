@@ -23,6 +23,7 @@ class HomeController extends BaseController {
     }
 
     public function create(){
+        $this->authorize();
         if ($this->isPost) {
             $category_id = $_POST['category-id'];
             $tag_name = $_POST['tag-name'];
@@ -42,6 +43,7 @@ class HomeController extends BaseController {
     }
 
     public function questionsByCategory($category_id){
+        $this->authorize();
         $this->questions = $this->db->getQuestionByCategory($category_id);
         $this->renderView(__FUNCTION__);
 }

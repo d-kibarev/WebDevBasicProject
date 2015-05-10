@@ -9,14 +9,15 @@ class AnswersController extends BaseController {
     }
 
     public function index($question_id) {
+        $this->authorize();
         $_SESSION['question-id'] = $question_id;
-
         $this->answers = $this->db->getAll($question_id);
 
         $this->renderView();
     }
 
     public function create() {
+        $this->authorize();
         if ($this->isPost) {
             $answer_text = $_POST['answer-text'];
             $question_id = $_SESSION['question-id'];

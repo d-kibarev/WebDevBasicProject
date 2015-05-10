@@ -14,12 +14,14 @@ class CategoriesController extends BaseController {
     }
 
     public function index(){
+        $this->authorize();
         $this->categories = $this->db->getCategories();
         $this->renderView(__FUNCTION__, false);
     }
 
     public function create()
     {
+        $this->authorize();
         if ($this->isPost) {
             $category_name = $_POST['category-name'];
             $category_description = $_POST['category-description'];
