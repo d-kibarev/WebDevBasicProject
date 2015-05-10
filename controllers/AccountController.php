@@ -22,7 +22,7 @@ class AccountController extends BaseController {
                 if ($isRegister) {
                     $_SESSION['username'] = $username;
                     $this->db->getUserId($username);
-                    $this->addErrorMessage("Successful registration!");
+                    $this->addInfoMessage("Successful registration!");
                     $this->redirectToUrl("/home/index/0/5");
                 } else {
                     $this->addErrorMessage("Registration failed!");

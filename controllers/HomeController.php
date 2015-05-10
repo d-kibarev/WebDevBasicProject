@@ -41,13 +41,6 @@ class HomeController extends BaseController {
         $this->renderView(__FUNCTION__,false);
     }
 
-    public function categories(){
-        //$this->questions_by_categories = $this->db->getQuestionByCategory($category_id);
-        $this->categories = $this->db->getCategories();
-        $this->renderView(__FUNCTION__, false);
-
-    }
-
     public function questionsByCategory($category_id){
         $this->questions = $this->db->getQuestionByCategory($category_id);
         $this->renderView(__FUNCTION__);
