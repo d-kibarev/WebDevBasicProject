@@ -8,6 +8,18 @@
     <?php if($this->isLoggedIn) : ?>
 
     <a href="/home/create">Ask question >></a>
+    <input type="button" value="Ask question" id="ask-question">
+    <script>
+        $('#ask-question').on('click', function(event){
+            $.ajax({
+                url: '/home/create',
+                method: 'GET'
+            }).success(function(data){
+                $('#home-page-msg').html(data);
+            })
+        })
+    </script>
+    <a href="/home/create">See categories >></a>
     <div id="main-content">
         <table style="width: 99%">
             <tr>

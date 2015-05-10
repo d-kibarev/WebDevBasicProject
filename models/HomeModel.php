@@ -25,14 +25,19 @@ class HomeModel extends BaseModel {
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create($category_name, $tag_name, $text, $username) {
+    public function getCategories() {
+        $statement = self::$db->query("SELECT id, name FROM categories");
+        return $statement->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function create($category_id, $tag_id, $text, $username) {
         if ($text == '') {
             return false;
         }
         $user_id = "(select id from users where username='$username')";
         $statement = self::$db->prepare(
             "INSERT INTO questions (content, user_id, record_date, category_id, tag_id)
-             VALUES(?, $user_id, now(), 1, 1)");
+             VALUES(?, $user_id, now(), $category_id, 1)");
         $statement->bind_param("s", $text);
         $statement->execute();
         return $statement->affected_rows > 0;

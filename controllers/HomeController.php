@@ -19,12 +19,12 @@ class HomeController extends BaseController {
 
     public function create(){
         if ($this->isPost) {
-            $category_name = $_POST['category-name'];
+            $category_id = $_POST['category-id'];
             $tag_name = $_POST['tag-name'];
             $question_text = $_POST['question-text'];
             $username = $_SESSION['username'];
 
-            if ($this->db->create($category_name, $tag_name, $question_text, $username)) {
+            if ($this->db->create($category_id, $tag_name, $question_text, $username)) {
                 $this->addInfoMessage("Question created.");
                 $this->redirectToUrl('/');
             } else {
@@ -32,6 +32,7 @@ class HomeController extends BaseController {
             }
         }
 
-        $this->renderView(__FUNCTION__);
+        $this->categories = $this->db->getCategories();
+        $this->renderView(__FUNCTION__,false);
     }
 }
